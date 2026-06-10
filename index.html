@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forest B2B - Prémium Kalodás Tűzifa</title>
+    
+    <title>Prémium Kalodás Tűzifa Nagykereskedés | Közvetlen Import</title>
+    <meta name="description" content="Kiváló minőségű, prémium kalodás tűzifa (bükk, tölgy, gyertyán, cser) nagykereskedelme közvetlenül a gyártótól. Kamionos tételű szállítás ipari partnereknek.">
+    <meta name="keywords" content="kalodás tűzifa, tűzifa nagykereskedés, prémium tűzifa, szlovák tűzifa import, bükk tűzifa, hasított tűzifa, kamionos szállítás">
+    <meta name="author" content="Prémium Kalodás Tűzifa">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prémium Kalodás Tűzifa Nagykereskedés">
+    <meta property="og:description" content="Minőségi kalodás tűzifa közvetlen importból. Bükk, tölgy, cser kamionos tételben, versenyképes áron.">
+    <meta property="og:url" content="https://www.te-weboldalad.hu/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,7 +110,7 @@
             padding: 40px 20px;
             position: relative;
         }
-        /* Elegáns "Üdvözöljük" címke */
+        
         .welcome-badge {
             display: inline-block;
             background: transparent;
@@ -110,26 +123,6 @@
             color: var(--accent);
             border: 1px solid var(--accent);
             margin-bottom: 24px;
-        }
-        /* B2B Nagykereskedelem badge - Mobilon elrejtve a letisztultságért */
-        .brand-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .brand-badge {
-                display: none; /* Mobilon kikapcsolva */
-            }
         }
 
         header h1 {
@@ -152,7 +145,7 @@
             margin-bottom: 35px;
         }
 
-        /* --- AZONNALI ELÉRHETŐSÉG ÉS AKCIÓ GOMBOK (Hajtás felett) --- */
+        /* --- AZONNALI ELÉRHETŐSÉG ÉS AKCIÓ GOMBOK --- */
         .hero-actions {
             display: flex;
             flex-direction: column;
@@ -182,7 +175,6 @@
             box-shadow: 0 15px 30px rgba(34, 72, 46, 0.5);
         }
 
-        /* Gyorselérhetőségi gombok felül */
         .quick-contact-wrapper {
             display: flex;
             gap: 10px;
@@ -216,7 +208,8 @@
             font-weight: 600;
         }
 
-        .main-content {
+        main {
+            display: block;
             max-width: 1300px;
             margin: 0 auto;
             padding: 60px 20px;
@@ -360,8 +353,8 @@
             transform: scale(1.06);
         }
 
-        /* Alsó Kapcsolat */
-        .footer-contact {
+        /* Alsó Kapcsolat (Footer) */
+        footer.footer-contact {
             margin-top: 60px;
             text-align: center;
             background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(10,15,11,0.9) 100%);
@@ -477,68 +470,68 @@
         </div>
     </header>
 
-    <div class="main-content" id="ajanlat">
+    <main id="ajanlat">
         
         <div class="b2b-badge-panel">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a855" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <span>Kizárólag érvényes közösségi adószámmal rendelkező partnereket szolgálunk ki. Minimális rendelési mennyiség: 1 teljes kamion (24 kaloda).</span>
         </div>
 
-        <div class="spec-grid">
-            <div class="glass-panel spec-card">
+        <section class="spec-grid">
+            <article class="glass-panel spec-card">
                 <h3>Anyagösszetétel</h3>
                 <ul class="spec-list">
                     <li>Fafajták <span id="dyn-woods">Bükk, Gyertyán, Cser, Tölgy</span></li>
-                    <li>Halmazállázat <span>Szorosan rakott, hasított</span></li>
+                    <li>Halmazállapot <span>Szorosan rakott, hasított</span></li>
                     <li>Minőség <span>Garantált keményfa alapanyag</span></li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="glass-panel spec-card">
+            <article class="glass-panel spec-card">
                 <h3>Mérnöki Méretek</h3>
                 <ul class="spec-list">
                     <li>Kaloda dimenzió <span>1.0 × 1.0 × 1.7 méter</span></li>
                     <li>Hasábhossz opciók <span>33 cm / 50 cm</span></li>
                     <li>Térfogat mérőszám <span>1.7 Standard Űrméter</span></li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="glass-panel spec-card">
+            <article class="glass-panel spec-card">
                 <h3>Logisztika & Átvétel</h3>
                 <ul class="spec-list">
                     <li>Egység/kamion <span>24 kaloda rakomány</span></li>
                     <li>Súly / egység <span>~ 1000 kg (1 tonna)</span></li>
                     <li>Lerakodás <span>Vevő feladata (Targoncával)</span></li>
                 </ul>
-            </div>
-        </div>
+            </article>
+        </section>
 
-        <div class="glass-panel premium-price-hero">
+        <section class="glass-panel premium-price-hero">
             <p style="color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Aktuális Nagykereskedelmi Import Ár</p>
             <p style="color: #6b7280; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
             <div class="price-display"><span id="dyn-price">74.000</span> Ft</div>
             <p style="font-size: 0.85rem; color: #6b7280; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
-        </div>
+        </section>
 
-        <div class="gallery-holder">
+        <section class="gallery-holder">
             <h2>Gyártói Környezet & Termékfotók</h2>
             <div class="gallery-masonry">
-                <div class="gallery-item"><img src="20250606_123502.jpg" alt="Fa 1"></div>
-                <div class="gallery-item"><img src="11595.jpg" alt="Fa 2"></div>
-                <div class="gallery-item"><img src="11596.jpg" alt="Fa 3"></div>
-                <div class="gallery-item"><img src="11597.jpg" alt="Fa 4"></div>
-                <div class="gallery-item"><img src="11598.jpg" alt="Fa 5"></div>
+                <div class="gallery-item"><img src="20250606_123502.jpg" alt="Prémium bükk kalodás tűzifa készleten" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11595.jpg" alt="Hasított keményfa tűzifa szorosan rakott kalodában" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11596.jpg" alt="Ipari mennyiségű tűzifa kamionos rakodásra előkészítve" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11597.jpg" alt="Minőségi gyertyán és cser tűzifa gyártói környezetben" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11598.jpg" alt="Tűzifa logisztika és raklapos tárolás" loading="lazy" decoding="async" width="400" height="250"></div>
             </div>
-        </div>
+        </section>
 
-        <div class="glass-panel footer-contact">
-            <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Indítsa el a megrendelést</h2>
-            <p style="color: #9ca3af; max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Logisztikai ügyintézés és közvetlen megrendelés:</p>
-            <a href="tel:+36209538876" class="contact-link">+36 20 953 8876</a>
-            <a href="mailto:jkutig@gmail.com" class="contact-link" style="font-size: 1.3rem; color: #fff;">jkutig@gmail.com</a>
-        </div>
+    </main>
 
-    </div>
+    <footer class="glass-panel footer-contact">
+        <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Indítsa el a megrendelést</h2>
+        <p style="color: #9ca3af; max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Logisztikai ügyintézés és közvetlen megrendelés:</p>
+        <a href="tel:+36209538876" class="contact-link">+36 20 953 8876</a>
+        <a href="mailto:jkutig@gmail.com" class="contact-link" style="font-size: 1.3rem; color: #fff;">jkutig@gmail.com</a>
+    </footer>
 
     <div class="admin-trigger" onclick="toggleAdmin()">⚙️ CMS Ár/Szöveg Kezelő</div>
     
