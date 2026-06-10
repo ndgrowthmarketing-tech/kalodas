@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest B2B - Prémium Kalodás Tűzifa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-glow: rgba(44, 94, 59, 0.4);
+            --accent: #e2a855; /* Prémium aranybarna / fa tónus */
+            --bg-glass: rgba(15, 25, 20, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #0b0f0c;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- IMMERSIVE ECO BACKGROUND --- */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(11,15,12,0.5), rgba(11,15,12,0.9)), 
+                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            z-index: -2;
+            animation: subtleZoom 40s infinite alternate ease-in-out;
+        }
+
+        @keyframes subtleZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* Lebegő organikus részecskék */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- GLASSMORPHISM DESIGN CORE --- */
+        .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        @media (max-width: 768px) {
+            .glass-panel {
+                padding: 24px;
+            }
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(44, 94, 59, 0.15);
+        }
+
+        /* --- SECTIONS --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* B2B Nagykereskedelem badge - Mobilon elrejtve a letisztultságért */
+        .brand-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .brand-badge {
+                display: none; /* Mobilon kikapcsolva */
+            }
+        }
+
+        header h1 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #a3b899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+
+        header p {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            color: #9ca3af;
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        /* --- AZONNALI ELÉRHETŐSÉG ÉS AKCIÓ GOMBOK (Hajtás felett) --- */
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .btn-premium {
+            width: 100%;
+            background: linear-gradient(135deg, #346743 0%, #22482e 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(34, 72, 46, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(34, 72, 46, 0.5);
+        }
+
+        /* Gyorselérhetőségi gombok felül */
+        .quick-contact-wrapper {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-quick-contact {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .btn-quick-contact:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent);
+        }
+
+        .btn-quick-contact span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .main-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* B2B Infó Sáv */
+        .b2b-badge-panel {
+            background: rgba(226, 168, 85, 0.08);
+            border: 1px solid rgba(226, 168, 85, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            font-weight: 500;
+            color: #f7fee7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .b2b-badge-panel {
+                flex-direction: column;
+                text-align: center;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Specifikációk Grid */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 480px) {
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .spec-card h3 {
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-card h3::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .spec-list li {
+            list-style: none;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #d1d5db;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .spec-list li span {
+            font-weight: 600;
+            color: #fff;
+            text-align: right;
+            padding-left: 10px;
+        }
+
+        /* Dinamikus Ár Kiemelés */
+        .premium-price-hero {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .price-display {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin: 15px 0;
+            letter-spacing: -1.5px;
+        }
+
+        .price-display span {
+            color: var(--accent);
+            text-shadow: 0 0 40px rgba(226, 168, 85, 0.3);
+        }
+
+        /* Galéria */
+        .gallery-holder {
+            margin-top: 60px;
+        }
+
+        .gallery-holder h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0.6;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Alsó Kapcsolat */
+        .footer-contact {
+            margin-top: 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(10,15,11,0.9) 100%);
+        }
+
+        .contact-link {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* --- FLOATING ADMIN PANEL --- */
+        .admin-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.85);
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .floating-admin {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            width: calc(100% - 40px);
+            max-width: 320px;
+            background: rgba(15, 20, 18, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 20px;
+            z-index: 998;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            display: none;
+        }
+
+        .floating-admin.active {
+            display: block;
+            animation: panelFadeIn 0.3s ease;
+        }
+
+        @keyframes panelFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-admin h4 {
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .admin-input-group {
+            margin-bottom: 12px;
+        }
+
+        .admin-input-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .admin-input-group input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px;
+            border-radius: 6px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .admin-save-btn {
+            width: 100%;
+            background: #346743;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-bg"></div>
+    <div id="particle-container"></div>
+
+    <header>
+        <h1 id="dyn-title">Fenntartható & Premium Kalodás Tűzifa</h1>
+        <p>Közvetlen gyártói import Szlovákiából, biogazdaságok és ipari partnerek részére.</p>
+        
+        <div class="hero-actions">
+            <div class="quick-contact-wrapper">
+                <a href="tel:+36209538876" class="btn-quick-contact">📞 Hívás: <span>+36 20 953 8876</span></a>
+                <a href="mailto:jkutig@gmail.com" class="btn-quick-contact">✉️ <span>E-mail</span></a>
+            </div>
+            <a href="#ajanlat" class="btn-premium">Szállítási feltételek & Ár</a>
+        </div>
+    </header>
+
+    <div class="main-content" id="ajanlat">
+        
+        <div class="b2b-badge-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a855" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Kizárólag érvényes közösségi adószámmal rendelkező partnereket szolgálunk ki. Minimális rendelési mennyiség: 1 teljes kamion (24 kaloda).</span>
+        </div>
+
+        <div class="spec-grid">
+            <div class="glass-panel spec-card">
+                <h3>Anyagösszetétel</h3>
+                <ul class="spec-list">
+                    <li>Fafajták <span id="dyn-woods">Bükk, Gyertyán, Cser, Tölgy</span></li>
+                    <li>Halmazállázat <span>Szorosan rakott, hasított</span></li>
+                    <li>Minőség <span>Garantált keményfa alapanyag</span></li>
+                </ul>
+            </div>
+
+            <div class="glass-panel spec-card">
+                <h3>Mérnöki Méretek</h3>
+                <ul class="spec-list">
+                    <li>Kaloda dimenzió <span>1.0 × 1.0 × 1.7 méter</span></li>
+                    <li>Hasábhossz opciók <span>33 cm / 50 cm</span></li>
+                    <li>Térfogat mérőszám <span>1.7 Standard Űrméter</span></li>
+                </ul>
+            </div>
+
+            <div class="glass-panel spec-card">
+                <h3>Logisztika & Átvétel</h3>
+                <ul class="spec-list">
+                    <li>Egység/kamion <span>24 kaloda rakomány</span></li>
+                    <li>Súly / egység <span>~ 1000 kg (1 tonna)</span></li>
+                    <li>Lerakodás <span>Vevő feladata (Targoncával)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="glass-panel premium-price-hero">
+            <p style="color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Aktuális Nagykereskedelmi Import Ár</p>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
+            <div class="price-display"><span id="dyn-price">74.000</span> Ft</div>
+            <p style="font-size: 0.85rem; color: #6b7280; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
+        </div>
+
+        <div class="gallery-holder">
+            <h2>Gyártói Környezet & Termékfotók</h2>
+            <div class="gallery-masonry">
+                <div class="gallery-item"><img src="20250606_123502.jpg" alt="Fa 1"></div>
+                <div class="gallery-item"><img src="11595.jpg" alt="Fa 2"></div>
+                <div class="gallery-item"><img src="11596.jpg" alt="Fa 3"></div>
+                <div class="gallery-item"><img src="11597.jpg" alt="Fa 4"></div>
+                <div class="gallery-item"><img src="11598.jpg" alt="Fa 5"></div>
+            </div>
+        </div>
+
+        <div class="glass-panel footer-contact">
+            <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Indítsa el a megrendelést</h2>
+            <p style="color: #9ca3af; max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Logisztikai ügyintézés és közvetlen megrendelés:</p>
+            <a href="tel:+36209538876" class="contact-link">+36 20 953 8876</a>
+            <a href="mailto:jkutig@gmail.com" class="contact-link" style="font-size: 1.3rem; color: #fff;">jkutig@gmail.com</a>
+        </div>
+
+    </div>
+
+    <div class="admin-trigger" onclick="toggleAdmin()">⚙️ CMS Ár/Szöveg Kezelő</div>
+    
+    <div class="floating-admin" id="adminPanel">
+        <h4>Élő tartalomkezelő</h4>
+        <div class="admin-input-group">
+            <label>Főcím módosítása</label>
+            <input type="text" id="in-title" value="Fenntartható & Premium Kalodás Tűzifa">
+        </div>
+        <div class="admin-input-group">
+            <label>Ár (Ft / kaloda)</label>
+            <input type="text" id="in-price" value="74.000">
+        </div>
+        <div class="admin-input-group">
+            <label>Fafajták listája</label>
+            <input type="text" id="in-woods" value="Bükk, Gyertyán, Cser, Tölgy">
+        </div>
+        <button class="admin-save-btn" onclick="saveAdminData()">Frissítés és Mentés</button>
+    </div>
+
+    <script>
+        // 1. ELMOSÓDOTT ERDŐI LÉGKERESZT RÉSZECSKE GENERÁTOR
+        const pContainer = document.getElementById('particle-container');
+        const particleCount = window.innerWidth < 768 ? 15 : 35; // Mobilon kevesebb részecske a jobb teljesítményért
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.backgroundColor = Math.random() > 0.5 ? 'rgba(163, 184, 153, 0.15)' : 'rgba(226, 168, 85, 0.1)';
+            particle.style.borderRadius = '50%';
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.filter = 'blur(1px)';
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * -20;
+            particle.style.animation = `floatAround ${duration}s infinite alternate ease-in-out`;
+            particle.style.animationDelay = `${delay}s`;
+            pContainer.appendChild(particle);
+        }
+
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            @keyframes floatAround {
+                0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+                50% { opacity: 0.6; }
+                100% { transform: translateY(-60px) translateX(40px); opacity: 0.1; }
+            }
+        `, styleSheet.cssRules.length);
+
+        // 2. ADMIN TOOGLE
+        function toggleAdmin() {
+            document.getElementById('adminPanel').classList.toggle('active');
+        }
+
+        // 3. LOCALSTORAGE CMS BINDING
+        window.onload = function() {
+            if(localStorage.getItem('premium_title')) {
+                document.getElementById('dyn-title').innerText = localStorage.getItem('premium_title');
+                document.getElementById('in-title').value = localStorage.getItem('premium_title');
+            }
+            if(localStorage.getItem('premium_price')) {
+                document.getElementById('dyn-price').innerText = localStorage.getItem('premium_price');
+                document.getElementById('in-price').value = localStorage.getItem('premium_price');
+            }
+            if(localStorage.getItem('premium_woods')) {
+                document.getElementById('dyn-woods').innerText = localStorage.getItem('premium_woods');
+                document.getElementById('in-woods').value = localStorage.getItem('premium_woods');
+            }
+        };
+
+        function saveAdminData() {
+            const t = document.getElementById('in-title').value;
+            const p = document.getElementById('in-price').value;
+            const w = document.getElementById('in-woods').value;
+
+            document.getElementById('dyn-title').innerText = t;
+            document.getElementById('dyn-price').innerText = p;
+            document.getElementById('dyn-woods').innerText = w;
+
+            localStorage.setItem('premium_title', t);
+            localStorage.setItem('premium_price', p);
+            localStorage.setItem('premium_woods', w);
+
+            alert('CMS sikeresen frissítve!');
+            toggleAdmin();
+        }
+    </script>
+</body>
+</html>
