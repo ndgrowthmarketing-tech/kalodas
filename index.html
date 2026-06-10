@@ -97,7 +97,20 @@
             padding: 40px 20px;
             position: relative;
         }
-
+        /* Elegáns "Üdvözöljük" címke */
+        .welcome-badge {
+            display: inline-block;
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            margin-bottom: 24px;
+        }
         /* B2B Nagykereskedelem badge - Mobilon elrejtve a letisztultságért */
         .brand-badge {
             display: inline-block;
@@ -451,6 +464,7 @@
     <div id="particle-container"></div>
 
     <header>
+        <div class="welcome-badge" id="dyn-welcome">Üdvözöljük honlapunkon!</div>
         <h1 id="dyn-title">Fenntartható & Premium Kalodás Tűzifa</h1>
         <p>Közvetlen gyártói import Szlovákiából, biogazdaságok és ipari partnerek részére.</p>
         
