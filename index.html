@@ -56,7 +56,6 @@
             background: linear-gradient(to bottom, rgba(11,15,12,0.3), rgba(11,15,12,0.85)), 
             url('erdo.webp') no-repeat center center/cover;
             z-index: -2;
-            /* OPTIMALIZÁLVA: Hardveres gyorsítás bekapcsolása az animációhoz */
             will-change: transform;
             animation: subtleZoom 40s infinite alternate ease-in-out;
         }
@@ -80,7 +79,6 @@
         /* --- GLASSMORPHISM DESIGN CORE (OPTIMIZED) --- */
         .glass-panel {
             background: var(--bg-glass);
-            /* OPTIMALIZÁLVA: Kivettük a backdrop-filtert a gyors görgetés érdekében */
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 40px;
@@ -124,7 +122,6 @@
             color: var(--accent);
             border: 1px solid var(--accent);
             margin-bottom: 24px;
-            /* OPTIMALIZÁLVA: Sötétebb háttér, blur nélkül */
             background: rgba(15, 25, 20, 0.85);
         }
 
@@ -188,7 +185,6 @@
 
         .btn-quick-contact {
             flex: 1;
-            /* OPTIMALIZÁLVA: Megnövelt fedettség, blur nélkül */
             background: rgba(15, 25, 20, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
@@ -223,7 +219,6 @@
 
         /* B2B Infó Sáv */
         .b2b-badge-panel {
-            /* OPTIMALIZÁLVA: Sötétebb/jobban látható háttér, blur nélkül */
             background: rgba(226, 168, 85, 0.15);
             border: 1px solid rgba(226, 168, 85, 0.3);
             padding: 20px;
@@ -339,7 +334,7 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer; /* Mutatja, hogy kattintható */
+            cursor: pointer;
         }
 
         .gallery-item img {
@@ -347,6 +342,9 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            /* JAVÍTÁS 1: Kép élsimítása és hardveres gyorsítása a szemcsésedés ellen */
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .gallery-item::after {
@@ -355,6 +353,8 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
             opacity: 0.6;
+            /* JAVÍTÁS 2: Átengedi a kattintást a képre */
+            pointer-events: none; 
         }
 
         .gallery-item:hover img {
@@ -382,7 +382,6 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            /* OPTIMALIZÁLVA: Sötétebb háttér, blur nélkül */
             background: rgba(0,0,0,0.95);
             border: 1px solid var(--border-glass);
             color: #fff;
@@ -632,7 +631,7 @@
     <script>
         // 1. ELMOSÓDOTT ERDŐI LÉGKERESZT RÉSZECSKE GENERÁTOR (Gyorsítva)
         const pContainer = document.getElementById('particle-container');
-        const particleCount = window.innerWidth < 768 ? 15 : 35; // Mobilon kevesebb részecske a jobb teljesítményért
+        const particleCount = window.innerWidth < 768 ? 15 : 35; 
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -644,8 +643,6 @@
             particle.style.height = `${size}px`;
             particle.style.top = `${Math.random() * 100}%`;
             particle.style.left = `${Math.random() * 100}%`;
-            // OPTIMALIZÁLVA: A filter: blur() eltávolítva a részecskékről is.
-            // Hozzáadva a hardveres gyorsítás (will-change)
             particle.style.willChange = 'transform, opacity';
             const duration = Math.random() * 20 + 10;
             const delay = Math.random() * -20;
