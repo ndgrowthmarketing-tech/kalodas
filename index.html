@@ -64,6 +64,13 @@
             100% { transform: scale(1.08); }
         }
 
+        /* Lebegő részecskék animációja (áthelyezve a JS-ből) */
+        @keyframes floatAround {
+            0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-60px) translateX(40px); opacity: 0.1; }
+        }
+
         #particle-container {
             position: fixed;
             top: 0;
@@ -338,7 +345,6 @@
             transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             backface-visibility: hidden;
             transform: translateZ(0);
-            /* JAVÍTÁS: Ez letiltja a képet az egér számára, így az Edge nem tesz rá Vizuális Keresés ikont */
             pointer-events: none;
         }
 
@@ -621,6 +627,7 @@
     </div>
 
     <script>
+        // Háttér animáció (részecskék)
         const pContainer = document.getElementById('particle-container');
         const particleCount = window.innerWidth < 768 ? 15 : 35; 
 
@@ -641,15 +648,8 @@
             particle.style.animationDelay = `${delay}s`;
             pContainer.appendChild(particle);
         }
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(`
-            @keyframes floatAround {
-                0% { transform: translateY(0) translateX(0); opacity: 0.2; }
-                50% { opacity: 0.6; }
-                100% { transform: translateY(-60px) translateX(40px); opacity: 0.1; }
-            }
-        `, styleSheet.cssRules.length);
 
+        // Admin panel logika
         function toggleAdmin() {
             document.getElementById('adminPanel').classList.toggle('active');
         }
@@ -686,36 +686,38 @@
             toggleAdmin();
         }
 
-        // JAVÍTÁS: A kattintást nem a képre, hanem az azt tartalmazó DIV-re rakjuk!
+        // GALÉRIA / MODAL LOGIKA
         const modal = document.getElementById("image-modal");
         const modalImg = document.getElementById("modal-img");
         const captionText = document.getElementById("modal-caption");
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         galleryItems.forEach(item => {
-            item.onclick = function() {
+            item.addEventListener("click", function() {
                 const img = this.querySelector("img");
                 if(img) {
                     modal.style.display = "block";
                     modalImg.src = img.src;
                     captionText.innerHTML = img.alt;
                 }
-            }
+            });
         });
 
         function closeModal() {
             modal.style.display = "none";
         }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+        // Bezárás ha a fekete háttérre kattintasz
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal();
             }
-        }
+        });
 
+        // Bezárás Escape gombra
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
-                modal.style.display = "none";
+                closeModal();
             }
         });
     </script>
