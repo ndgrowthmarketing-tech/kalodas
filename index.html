@@ -339,6 +339,7 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer; /* Mutatja, hogy kattintható */
         }
 
         .gallery-item img {
@@ -456,6 +457,66 @@
             cursor: pointer;
             font-weight: 600;
         }
+
+        /* --- KÉP MEGJELENÍTŐ (LIGHTBOX) CSS --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+            object-fit: contain;
+        }
+
+        #modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: var(--accent);
+            padding: 15px 0;
+            font-size: 1.1rem;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--accent);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes zoomIn {
+            from {transform:scale(0.9); opacity:0}
+            to {transform:scale(1); opacity:1}
+        }
     </style>
 </head>
 <body>
@@ -526,11 +587,11 @@
         <section class="gallery-holder">
             <h2>Gyártói Környezet & Termékfotók</h2>
             <div class="gallery-masonry">
-                <div class="gallery-item"><img src="20250606_123502.jpg" alt="Prémium bükk kalodás tűzifa készleten" loading="lazy" decoding="async" width="400" height="250"></div>
-                <div class="gallery-item"><img src="11595.jpg" alt="Hasított keményfa tűzifa szorosan rakott kalodában" loading="lazy" decoding="async" width="400" height="250"></div>
-                <div class="gallery-item"><img src="11596.jpg" alt="Ipari mennyiségű tűzifa kamionos rakodásra előkészítve" loading="lazy" decoding="async" width="400" height="250"></div>
-                <div class="gallery-item"><img src="11597.jpg" alt="Minőségi gyertyán és cser tűzifa gyártói környezetben" loading="lazy" decoding="async" width="400" height="250"></div>
-                <div class="gallery-item"><img src="11598.jpg" alt="Tűzifa logisztika és raklapos tárolás" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="20250606_123502.webp" alt="Prémium bükk kalodás tűzifa készleten" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11595.webp" alt="Hasított keményfa tűzifa szorosan rakott kalodában" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11596.webp" alt="Ipari mennyiségű tűzifa kamionos rakodásra előkészítve" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11597.webp" alt="Minőségi gyertyán és cser tűzifa gyártói környezetben" loading="lazy" decoding="async" width="400" height="250"></div>
+                <div class="gallery-item"><img src="11598.webp" alt="Tűzifa logisztika és raklapos tárolás" loading="lazy" decoding="async" width="400" height="250"></div>
             </div>
         </section>
 
@@ -542,6 +603,12 @@
         <a href="tel:+36209538876" class="contact-link">+36 20 953 8876</a>
         <a href="mailto:jkutig@gmail.com" class="contact-link" style="font-size: 1.3rem; color: #fff;">jkutig@gmail.com</a>
     </footer>
+
+    <div id="image-modal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption"></div>
+    </div>
 
     <div class="admin-trigger" onclick="toggleAdmin()">⚙️ CMS Ár/Szöveg Kezelő</div>
     
@@ -632,6 +699,38 @@
             alert('CMS sikeresen frissítve!');
             toggleAdmin();
         }
+
+        // 4. KÉP MEGJELENÍTŐ (LIGHTBOX) LOGIKA
+        const modal = document.getElementById("image-modal");
+        const modalImg = document.getElementById("modal-img");
+        const captionText = document.getElementById("modal-caption");
+        const images = document.querySelectorAll(".gallery-item img");
+
+        images.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        });
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Bezárás, ha a háttérre kattintanak
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Bezárás az ESC gombbal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
