@@ -655,19 +655,24 @@
         }
 
         window.onload = function() {
-            if(localStorage.getItem('premium_title')) {
-                document.getElementById('dyn-title').innerText = localStorage.getItem('premium_title');
-                document.getElementById('in-title').value = localStorage.getItem('premium_title');
-            }
-            if(localStorage.getItem('premium_price')) {
-                document.getElementById('dyn-price').innerText = localStorage.getItem('premium_price');
-                document.getElementById('in-price').value = localStorage.getItem('premium_price');
-            }
-            if(localStorage.getItem('premium_woods')) {
-                document.getElementById('dyn-woods').innerText = localStorage.getItem('premium_woods');
-                document.getElementById('in-woods').value = localStorage.getItem('premium_woods');
-            }
-        };
+    // Csak akkor frissítünk, ha az érték nem null/üres
+    const savedTitle = localStorage.getItem('premium_title');
+    const savedPrice = localStorage.getItem('premium_price');
+    const savedWoods = localStorage.getItem('premium_woods');
+
+    if (savedTitle) {
+        document.getElementById('dyn-title').innerText = savedTitle;
+        document.getElementById('in-title').value = savedTitle;
+    }
+    if (savedPrice) {
+        document.getElementById('dyn-price').innerText = savedPrice;
+        document.getElementById('in-price').value = savedPrice;
+    }
+    if (savedWoods) {
+        document.getElementById('dyn-woods').innerText = savedWoods;
+        document.getElementById('in-woods').value = savedWoods;
+    }
+};
 
         function saveAdminData() {
             const t = document.getElementById('in-title').value;
