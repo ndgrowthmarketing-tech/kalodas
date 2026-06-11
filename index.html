@@ -14,7 +14,7 @@
     <meta property="og:title" content="Prémium Kalodás Tűzifa Nagykereskedés">
     <meta property="og:description" content="Minőségi kalodás tűzifa közvetlen importból. Bükk, tölgy, cser kamionos tételben, versenyképes áron.">
     <meta property="og:url" content="https://www.te-weboldalad.hu/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="vilagos-erdo.jpg">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
     
@@ -26,9 +26,9 @@
         :root {
             --primary-glow: rgba(44, 94, 59, 0.4);
             --accent: #e2a855; /* Prémium aranybarna / fa tónus */
-            --bg-glass: rgba(15, 25, 20, 0.65);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --text-main: #f3f4f6;
+            --bg-glass: rgba(15, 25, 20, 0.65); /* Elegáns sötét panel */
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --text-main: #f3f4f6; /* Fehér szöveg */
         }
 
         * {
@@ -52,8 +52,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(to bottom, rgba(11,15,12,0.5), rgba(11,15,12,0.9)), 
-                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            /* FINOMÍTOTT ÁRNYÉKOLÁS: Hogy a világos kép gyönyörűen átüssön, de a szöveg olvasható legyen */
+            background: linear-gradient(to bottom, rgba(11,15,12,0.2), rgba(11,15,12,0.8)), 
+                        url('vilagos-erdo.jpg') no-repeat center center/cover;
             z-index: -2;
             animation: subtleZoom 40s infinite alternate ease-in-out;
         }
@@ -94,8 +95,8 @@
 
         .glass-panel:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 60px rgba(44, 94, 59, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 30px 60px rgba(44, 94, 59, 0.25);
         }
 
         /* --- SECTIONS --- */
@@ -122,6 +123,8 @@
             color: var(--accent);
             border: 1px solid var(--accent);
             margin-bottom: 24px;
+            background: rgba(15, 25, 20, 0.4);
+            backdrop-filter: blur(5px);
         }
 
         header h1 {
@@ -134,14 +137,16 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
             max-width: 900px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Jobb olvashatóság */
         }
 
         header p {
             font-size: clamp(1rem, 2vw, 1.4rem);
             font-weight: 300;
-            color: #9ca3af;
+            color: #d1d5db;
             max-width: 700px;
             margin-bottom: 35px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* Jobb olvashatóság */
         }
 
         /* --- AZONNALI ELÉRHETŐSÉG ÉS AKCIÓ GOMBOK --- */
@@ -182,8 +187,9 @@
 
         .btn-quick-contact {
             flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 25, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
             padding: 12px 10px;
             border-radius: 8px;
@@ -217,7 +223,8 @@
         /* B2B Infó Sáv */
         .b2b-badge-panel {
             background: rgba(226, 168, 85, 0.08);
-            border: 1px solid rgba(226, 168, 85, 0.2);
+            border: 1px solid rgba(226, 168, 85, 0.3);
+            backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 12px;
             display: flex;
@@ -356,7 +363,7 @@
         footer.footer-contact {
             margin-top: 60px;
             text-align: center;
-            background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(10,15,11,0.9) 100%);
+            background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(10,15,11,0.95) 100%);
         }
 
         .contact-link {
@@ -507,9 +514,9 @@
 
         <section class="glass-panel premium-price-hero">
             <p style="color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Aktuális Nagykereskedelmi Import Ár</p>
-            <p style="color: #6b7280; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
+            <p style="color: #d1d5db; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
             <div class="price-display"><span id="dyn-price">74.000</span> Ft</div>
-            <p style="font-size: 0.85rem; color: #6b7280; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
+            <p style="font-size: 0.85rem; color: #9ca3af; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
         </section>
 
         <section class="gallery-holder">
