@@ -26,7 +26,8 @@
         :root {
             --primary-glow: rgba(44, 94, 59, 0.4);
             --accent: #e2a855; /* Prémium aranybarna / fa tónus */
-            --bg-glass: rgba(15, 25, 20, 0.65); /* Elegáns sötét panel */
+            /* OPTIMALIZÁLVA: Magasabb fedettség a blur hiánya miatt, hogy a szöveg jól olvasható maradjon */
+            --bg-glass: rgba(15, 25, 20, 0.88); 
             --border-glass: rgba(255, 255, 255, 0.12);
             --text-main: #f3f4f6; /* Fehér szöveg */
         }
@@ -52,10 +53,11 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            /* JAVÍTVA: Közvetlen online link egy világos, aranyló erdőhöz, optimalizált árnyékolással */
             background: linear-gradient(to bottom, rgba(11,15,12,0.3), rgba(11,15,12,0.85)), 
             url('erdo.webp') no-repeat center center/cover;
             z-index: -2;
+            /* OPTIMALIZÁLVA: Hardveres gyorsítás bekapcsolása az animációhoz */
+            will-change: transform;
             animation: subtleZoom 40s infinite alternate ease-in-out;
         }
 
@@ -75,16 +77,16 @@
             pointer-events: none;
         }
 
-        /* --- GLASSMORPHISM DESIGN CORE --- */
+        /* --- GLASSMORPHISM DESIGN CORE (OPTIMIZED) --- */
         .glass-panel {
             background: var(--bg-glass);
-            backdrop-filter: blur(16px) saturate(120%);
-            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            /* OPTIMALIZÁLVA: Kivettük a backdrop-filtert a gyors görgetés érdekében */
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            will-change: transform;
         }
 
         @media (max-width: 768px) {
@@ -113,7 +115,6 @@
         
         .welcome-badge {
             display: inline-block;
-            background: transparent;
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
@@ -123,8 +124,8 @@
             color: var(--accent);
             border: 1px solid var(--accent);
             margin-bottom: 24px;
-            background: rgba(15, 25, 20, 0.4);
-            backdrop-filter: blur(5px);
+            /* OPTIMALIZÁLVA: Sötétebb háttér, blur nélkül */
+            background: rgba(15, 25, 20, 0.85);
         }
 
         header h1 {
@@ -187,8 +188,8 @@
 
         .btn-quick-contact {
             flex: 1;
-            background: rgba(15, 25, 20, 0.6);
-            backdrop-filter: blur(10px);
+            /* OPTIMALIZÁLVA: Megnövelt fedettség, blur nélkül */
+            background: rgba(15, 25, 20, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
             padding: 12px 10px;
@@ -204,7 +205,7 @@
         }
 
         .btn-quick-contact:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent);
         }
 
@@ -222,9 +223,9 @@
 
         /* B2B Infó Sáv */
         .b2b-badge-panel {
-            background: rgba(226, 168, 85, 0.08);
+            /* OPTIMALIZÁLVA: Sötétebb/jobban látható háttér, blur nélkül */
+            background: rgba(226, 168, 85, 0.15);
             border: 1px solid rgba(226, 168, 85, 0.3);
-            backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 12px;
             display: flex;
@@ -380,7 +381,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.85);
+            /* OPTIMALIZÁLVA: Sötétebb háttér, blur nélkül */
+            background: rgba(0,0,0,0.95);
             border: 1px solid var(--border-glass);
             color: #fff;
             padding: 10px 16px;
@@ -388,7 +390,6 @@
             cursor: pointer;
             font-size: 0.8rem;
             z-index: 999;
-            backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
@@ -490,7 +491,7 @@
             <article class="glass-panel spec-card">
                 <h3>Fafajták</h3>
                 <ul class="spec-list">
-                    <li>Fafajták <span></span>id="dyn-woods">Bükk, Gyertyán, Cser, Tölgy</span></li>
+                    <li>Fafajták <span id="dyn-woods">Bükk, Gyertyán, Cser, Tölgy</span></li>
                     <li>Halmazállapot <span>Szorosan rakott, hasított</span></li>
                     <li>Minőség <span>Garantált keményfa alapanyag</span></li>
                 </ul>
@@ -562,7 +563,7 @@
     </div>
 
     <script>
-        // 1. ELMOSÓDOTT ERDŐI LÉGKERESZT RÉSZECSKE GENERÁTOR
+        // 1. ELMOSÓDOTT ERDŐI LÉGKERESZT RÉSZECSKE GENERÁTOR (Gyorsítva)
         const pContainer = document.getElementById('particle-container');
         const particleCount = window.innerWidth < 768 ? 15 : 35; // Mobilon kevesebb részecske a jobb teljesítményért
 
@@ -576,7 +577,9 @@
             particle.style.height = `${size}px`;
             particle.style.top = `${Math.random() * 100}%`;
             particle.style.left = `${Math.random() * 100}%`;
-            particle.style.filter = 'blur(1px)';
+            // OPTIMALIZÁLVA: A filter: blur() eltávolítva a részecskékről is.
+            // Hozzáadva a hardveres gyorsítás (will-change)
+            particle.style.willChange = 'transform, opacity';
             const duration = Math.random() * 20 + 10;
             const delay = Math.random() * -20;
             particle.style.animation = `floatAround ${duration}s infinite alternate ease-in-out`;
