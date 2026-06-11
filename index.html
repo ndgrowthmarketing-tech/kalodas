@@ -14,7 +14,7 @@
     <meta property="og:title" content="Prémium Kalodás Tűzifa Nagykereskedés">
     <meta property="og:description" content="Minőségi kalodás tűzifa közvetlen importból. Bükk, tölgy, cser kamionos tételben, versenyképes áron.">
     <meta property="og:url" content="https://www.te-weboldalad.hu/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=1200&auto=format&fit=crop">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
     
@@ -26,9 +26,11 @@
         :root {
             --primary-glow: rgba(44, 94, 59, 0.4);
             --accent: #e2a855; /* Prémium aranybarna / fa tónus */
-            --bg-glass: rgba(15, 25, 20, 0.65);
+            /* ÚJ: Sötétebb panelháttér a jobb kontrasztért a világos háttéren */
+            --bg-glass: rgba(15, 25, 20, 0.85); 
             --border-glass: rgba(255, 255, 255, 0.08);
-            --text-main: #f3f4f6;
+            /* ÚJ: Sötét szövegszín */
+            --text-main: #2a3e30; 
         }
 
         * {
@@ -40,7 +42,8 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            background-color: #0b0f0c;
+            /* ÚJ: Világos háttérszín */
+            background-color: #f7f9f8; 
             overflow-x: hidden;
             position: relative;
         }
@@ -52,8 +55,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(to bottom, rgba(11,15,12,0.5), rgba(11,15,12,0.9)), 
-                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            /* ÚJ: Világosabb háttérátmenet és kép */
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.4)), 
+                        url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
             z-index: -2;
             animation: subtleZoom 40s infinite alternate ease-in-out;
         }
@@ -129,7 +133,8 @@
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #ffffff 0%, #a3b899 100%);
+            /* ÚJ: Sötét színű cím */
+            background: linear-gradient(135deg, #2a3e30 0%, #44584a 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
@@ -139,7 +144,8 @@
         header p {
             font-size: clamp(1rem, 2vw, 1.4rem);
             font-weight: 300;
-            color: #9ca3af;
+            /* ÚJ: Sötét szöveg */
+            color: #4b5563; 
             max-width: 700px;
             margin-bottom: 35px;
         }
@@ -182,9 +188,11 @@
 
         .btn-quick-contact {
             flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
+            /* ÚJ: Világosabb háttér gomb panelen */
+            background: rgba(0, 0, 0, 0.05); 
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            /* ÚJ: Sötét szöveg */
+            color: #000; 
             padding: 12px 10px;
             border-radius: 8px;
             text-decoration: none;
@@ -198,7 +206,8 @@
         }
 
         .btn-quick-contact:hover {
-            background: rgba(255, 255, 255, 0.12);
+            /* ÚJ: Sötétebb hover hatás */
+            background: rgba(0, 0, 0, 0.12); 
             border-color: var(--accent);
         }
 
@@ -216,8 +225,9 @@
 
         /* B2B Infó Sáv */
         .b2b-badge-panel {
-            background: rgba(226, 168, 85, 0.08);
-            border: 1px solid rgba(226, 168, 85, 0.2);
+            /* ÚJ: Világosabb háttér */
+            background: rgba(226, 168, 85, 0.15); 
+            border: 1px solid rgba(226, 168, 85, 0.3);
             padding: 20px;
             border-radius: 12px;
             display: flex;
@@ -225,7 +235,8 @@
             gap: 15px;
             margin-bottom: 50px;
             font-weight: 500;
-            color: #f7fee7;
+            /* ÚJ: Sötét szöveg */
+            color: #2a3e30; 
             font-size: 0.95rem;
         }
 
@@ -273,7 +284,8 @@
             list-style: none;
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: #d1d5db;
+            /* ÚJ: Világosabb szöveg sötét panelen */
+            color: #ccc; 
             display: flex;
             justify-content: space-between;
             font-size: 0.95rem;
@@ -317,6 +329,8 @@
             text-align: center;
             margin-bottom: 30px;
             letter-spacing: -1px;
+            /* ÚJ: Fehér színű cím a sötét háttérre */
+            color: #fff; 
         }
 
         .gallery-masonry {
@@ -356,7 +370,8 @@
         footer.footer-contact {
             margin-top: 60px;
             text-align: center;
-            background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(10,15,11,0.9) 100%);
+            /* ÚJ: Sötétebb panelháttér, sötétebb alul */
+            background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(15,25,20,0.95) 100%); 
         }
 
         .contact-link {
@@ -507,9 +522,9 @@
 
         <section class="glass-panel premium-price-hero">
             <p style="color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Aktuális Nagykereskedelmi Import Ár</p>
-            <p style="color: #6b7280; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
+            <p style="color: #ccc; font-size: 0.9rem; margin-top: 4px;">Budapestre és közvetlen vonzáskörzetébe leszállítva</p>
             <div class="price-display"><span id="dyn-price">74.000</span> Ft</div>
-            <p style="font-size: 0.85rem; color: #6b7280; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
+            <p style="font-size: 0.85rem; color: #ccc; max-width: 500px; margin: 0 auto;">Az EKÁER szám biztosítása a jogszabályoknak megfelelően a vevő feladata.</p>
         </section>
 
         <section class="gallery-holder">
@@ -526,8 +541,8 @@
     </main>
 
     <footer class="glass-panel footer-contact">
-        <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Kérjen ajánlatot.</h2>
-        <p style="color: #9ca3af; max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Logisztikai ügyintézés és közvetlen megrendelés:</p>
+        <h2 style="margin-bottom: 10px; font-size: 1.5rem; color: #fff;">Kérjen ajánlatot.</h2>
+        <p style="color: #ccc; max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Logisztikai ügyintézés és közvetlen megrendelés:</p>
         <a href="tel:+36209538876" class="contact-link">+36 20 953 8876</a>
         <a href="mailto:jkutig@gmail.com" class="contact-link" style="font-size: 1.3rem; color: #fff;">jkutig@gmail.com</a>
     </footer>
@@ -559,7 +574,8 @@
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.style.position = 'absolute';
-            particle.style.backgroundColor = Math.random() > 0.5 ? 'rgba(163, 184, 153, 0.15)' : 'rgba(226, 168, 85, 0.1)';
+            // ÚJ: Sötét részecskék világos háttéren
+            particle.style.backgroundColor = Math.random() > 0.5 ? 'rgba(42, 62, 48, 0.15)' : 'rgba(42, 62, 48, 0.1)';
             particle.style.borderRadius = '50%';
             const size = Math.random() * 5 + 2;
             particle.style.width = `${size}px`;
